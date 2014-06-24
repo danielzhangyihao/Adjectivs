@@ -177,6 +177,16 @@ describe "User pages" do
       it { should have_content("Update your profile") }
       it { should have_title("Edit user") }
       it { should have_link('change', href: 'http://gravatar.com/emails') }
+
+    end
+     
+    describe "user should be able to delete himself" do
+    it { should have_link("Delete Account", href: user_path(user)) }
+        it "should be able to delete the user himself" do
+          expect do
+            click_link('Delete Account', match: :first)
+          end.to change(User, :count).by(-1)
+        end
     end
 
     describe "with invalid information" do
