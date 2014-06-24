@@ -203,6 +203,7 @@ describe "User pages" do
         fill_in "Email",            with: new_email
         fill_in "Password",         with: user.password
         fill_in "Confirm Password", with: user.password
+        choose  "user_subscribe_false"
         click_button "Save changes"
       end
 
@@ -211,8 +212,23 @@ describe "User pages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { expect(user.reload.name).to  eq new_name }
       specify { expect(user.reload.email).to eq new_email }
+      specify { expect(user.reload.subscribe).to eq false }
+
+     describe "choose to subscribe" do
+      before do
+        visit edit_user_path(user)
+        fill_in "Name",             with: new_name
+        fill_in "Email",            with: new_email
+        fill_in "Password",         with: user.password
+        fill_in "Confirm Password", with: user.password
+        choose  "user_subscribe_true"
+        click_button "Save changes"
+      end
+      specify { expect(user.reload.subscribe).to eq true }
+
+     end
+    
     end
-  
   end
 
   describe "following/followers" do

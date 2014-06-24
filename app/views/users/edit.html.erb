@@ -17,14 +17,22 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
 
+      <%= f.radio_button :subscribe,  true %> 
+      <%= f.label :subscribe, "Subscribe" %>
+      
+      <%= f.radio_button :subscribe, false %>
+      <%= f.label :subscribe, "Unsubscribe" %>
+      
+  
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
       
-     <% if current_user?(@user) %>
-       <%= link_to "Delete Account", @user, method: :delete,
-                                  data: { confirm: "You sure?" }, class:"btn btn-large btn-primary deleteUser"  %>
-     <% end %>
+      <% if current_user?(@user) %>
+      <%= link_to "Delete Account", @user, method: :delete,
+                                  data: { confirm: "You sure?" }, 
+                                  class:"btn btn-large btn-primary deleteUser"  %>
+      <% end %>
   
-    <% end %>
+      <% end %>
     
 
     <%= gravatar_for @user %>
