@@ -24,12 +24,12 @@
       <%= f.label :subscribe, "Unsubscribe" %>
       
   
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
       
       <% if current_user?(@user) %>
       <%= link_to "Delete Account", @user, method: :delete,
                                   data: { confirm: "You sure?" }, 
-                                  class:"btn btn-large btn-primary deleteUser"  %>
+                                  class:"btn btn-primary deleteUser"  %>
       <% end %>
   
       <% end %>
