@@ -1,5 +1,2 @@
-# Ruby on Rails Tutorial: sample application
-
-This is the sample application for
-the [*Ruby on Rails Tutorial*](http://railstutorial.org/)
-by [Michael Hartl](http://michaelhartl.com/)
+This is the MVP for adjectivs. 
+Adjectivs is transforming the way people find clothes online.
