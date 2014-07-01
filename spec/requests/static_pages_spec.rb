@@ -8,8 +8,27 @@ describe "Static pages" do
     before { visit root_path }
 
     it { should have_content('Adjectivs') }
-    it { should have_title(full_title('')) }
-    it { should_not have_title('| Home') }
+    it { should have_title(full_title('Home')) }
+    
+
+    describe "for signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        sign_in user
+      end
+
+      it { should have_content('Adjectivs') }
+      it { should have_title(full_title('Home')) }
+      it { should_not have_link("Sign up now!", href: signup_path) }
+
+     end
+    
+  end
+
+  describe "feed page" do
+    before { visit feed_path }
+
+    it { should have_title('Sign in') }
 
     describe "for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
@@ -17,7 +36,7 @@ describe "Static pages" do
         FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
         FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
         sign_in user
-        visit root_path
+        visit feed_path
       end
 
       it "should render the user's feed" do
@@ -30,13 +49,15 @@ describe "Static pages" do
         let(:other_user) { FactoryGirl.create(:user) }
         before do
           other_user.follow!(user)
-          visit root_path
+          visit feed_path
         end
 
         it { should have_link("0 following", href: following_user_path(user)) }
         it { should have_link("1 followers", href: followers_user_path(user)) }
       end
     end
+
+
   end
 
   describe "Help page" do

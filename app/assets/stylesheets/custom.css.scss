@@ -108,6 +108,15 @@ p {
   }
 }
 
+a.btn.btn-primary.signin{
+  border-radius: 999em;
+  background-color: white;
+  color: white;
+  background: rgba(0,0,0,0);
+  border-color: rgba(255,255,255,0.97);
+
+}
+
 /* footer */
 
 footer {
@@ -276,3 +285,63 @@ aside {
 a.btn.btn-primary.deleteUser {
 float: right;
 }
+
+
+/* home page*/ 
+
+h1.punch-line{
+  font-size: 7em;
+  margin-top: 130px;
+
+}
+
+h2.intro{
+  font-size: 1.5em;
+  margin-top: 30px;
+
+}
+
+.btn.btn-large.btn-primary.signup{
+  margin-bottom: 200px;
+  border-radius: 999em;
+  background-color: white;
+  color: rgb(68, 180, 68);
+  background: rgba(0,0,0,0);
+  border-color: rgb(68, 180, 68);
+}
+
+
+/*sign in page*/ 
+
+.signin-box{
+  margin-top: 150px;
+
+
+}
+
+p.bottom-line{
+  margin-bottom: 111px;
+}
+
+/*sign up page*/
+
+.btn.btn-large.btn-primary.create-account{
+  margin-top: 28px;
+  border-radius: 999em;
+  background-color: white;
+  color: rgb(68, 180, 68);
+  background: rgba(0,0,0,0);
+  border-color: rgb(68, 180, 68);
+  margin-bottom: 50px;
+
+}
+
+.signup-box{
+  margin-top: 60px;
+
+}
+
+
+
+
+
