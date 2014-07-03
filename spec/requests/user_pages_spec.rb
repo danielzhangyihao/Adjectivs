@@ -142,7 +142,7 @@ describe "User pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example User"
+        fill_in "Profile name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
@@ -157,7 +157,7 @@ describe "User pages" do
         let(:user) { User.find_by(email: 'user@example.com') }
 
         it { should have_link('Sign out') }
-        it { should have_title(user.name) }
+        it { should have_title(full_title('Home')) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
 
@@ -199,7 +199,7 @@ describe "User pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "Name",             with: new_name
+        fill_in "Profile name",             with: new_name
         fill_in "Email",            with: new_email
         fill_in "Password",         with: user.password
         fill_in "Confirm Password", with: user.password
@@ -217,7 +217,7 @@ describe "User pages" do
      describe "choose to subscribe" do
       before do
         visit edit_user_path(user)
-        fill_in "Name",             with: new_name
+        fill_in "Profile name",             with: new_name
         fill_in "Email",            with: new_email
         fill_in "Password",         with: user.password
         fill_in "Confirm Password", with: user.password
