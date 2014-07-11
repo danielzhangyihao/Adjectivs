@@ -1,0 +1,3 @@
+class VigLinkProductRepository
+	include HTTParty
+end
