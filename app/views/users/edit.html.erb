@@ -22,6 +22,10 @@
       
       <%= f.radio_button :subscribe, false %>
       <%= f.label :subscribe, "Unsubscribe" %>
+
+      <div id="profile-picture"> 
+        <%= f.file_field :avatar %> 
+      </div>
       
   
       <%= f.submit "Save changes", class: "btn btn-primary" %>
@@ -34,8 +38,5 @@
   
       <% end %>
     
-
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
   </div>
 </div>
