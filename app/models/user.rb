@@ -2,12 +2,6 @@ class User < ActiveRecord::Base
   #def self.s3_config
    # @@s3_config ||= YAML.load(ERB.new(File.read("#{Rails.root}/config/s3.yml")).result)[Rails.env]    
   #end
-  attr_accessible :name, :email, :password, :password_confirmation,
-                  :avatar,
-                  :avatar_file_name,
-                  :avatar_content_type,
-                  :avatar_file_size,
-                  :avatar_updated_at
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
