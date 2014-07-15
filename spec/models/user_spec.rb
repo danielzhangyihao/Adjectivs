@@ -26,6 +26,8 @@ describe User do
   it { should respond_to(:reverse_relationships) }
   it { should respond_to(:followers) }
   it { should respond_to(:subscribe) }
+  it { should respond_to(:avatar) }
+
 
 
   it { should be_valid }
