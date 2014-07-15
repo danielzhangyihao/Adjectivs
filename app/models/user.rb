@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  #def self.s3_config
+   # @@s3_config ||= YAML.load(ERB.new(File.read("#{Rails.root}/config/s3.yml")).result)[Rails.env]    
+  #end
+
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -14,6 +18,13 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+  def s3_credentials
+    {:bucket => "adjectivs-products", :access_key_id => "AKIAIWKGAOCVWSXLPDDA", :secret_access_key => "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"}
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

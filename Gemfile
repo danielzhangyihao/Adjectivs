@@ -12,6 +12,9 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem "paperclip", "~> 4.1"
 gem 'httparty', '~> 0.13.1'
+gem 'aws-sdk', '~> 1.5.7'
+gem 'paperclip-aws'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
