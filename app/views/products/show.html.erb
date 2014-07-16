@@ -1,0 +1,27 @@
+<% provide(:title, @product.name) %>
+    <h1>
+        <%= @product.name %>
+    </h1>
+    <h2>
+      $ <%= @product.price %> 
+    </h2>
+    <p>
+    	<%= @product.description %>
+    </p>
+
+<div class="row">
+	<div class="span8">
+		<% if @product.assets.any? %>
+		   <% @product.assets.each do |image| %>
+		   <%= link_to( image_tag(image.asset.url(:medium)), image.asset.url(:original) ) %>
+           <% end %>
+        <% end %>
+
+		</div>
+
+	</div>
+  
+
+
+
+  
