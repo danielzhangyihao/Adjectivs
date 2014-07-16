@@ -4,6 +4,13 @@ SampleApp::Application.routes.draw do
       get :following, :followers
     end
   end
+  
+  resources :products do
+   
+      resources :assets
+  
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
@@ -15,6 +22,7 @@ SampleApp::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/feed',    to: 'static_pages#feed',   via: 'get'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
