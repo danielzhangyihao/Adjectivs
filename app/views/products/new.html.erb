@@ -16,17 +16,18 @@
       <%= f.label :description %>
       <%= f.text_field :description %>
       
-      <%= f.fields_for :assets do |asset| %>
-          <% if asset.object.new_record? %>
-               <%= asset.file_field :asset %>
+      <%= f.fields_for :assets do |asset_fields| %>
+          <% if asset_fields.object.new_record? %>
+               <%= asset_fields.file_field :asset %>
           <% end %>
       <% end %>
-
-      <% f.fields_for :assets do |asset| %>
-          <% unless asset.object.new_record? %>
+      
+      
+      <% f.fields_for :assets do |asset_fields| %>
+          <% unless asset_fields.object.new_record? %>
               <div class="thumbnail">
-                    <%= link_to( image_tag(asset.object.asset.url(:thumb)), asset.object.asset.url(:original) ) %>
-                     <%= asset.check_box :_delete %>
+                    <%= link_to( image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original) ) %>
+                     <%= asset_fields.check_box :_delete %>
                 </div>
           <% end %>        
       <% end %>

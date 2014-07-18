@@ -1,0 +1,9 @@
+<li>
+    <%= link_to product.name, product %>
+    
+    $ <%= product.price %> 
+    
+    <%= link_to( image_tag(product.assets.first.asset.url(:thumb)), product.assets.first.asset.url(:original) ) %>
+  
+
+</li>

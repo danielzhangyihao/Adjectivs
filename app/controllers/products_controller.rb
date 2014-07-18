@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
 
+    before_action :signed_in_user, only: [:new, :edit, :update , :destroy ,:create]
+    before_action :admin_user,     only: [:new, :edit, :update , :destroy ,:create]
+  
 
     def new
    	  @product=Product.new
@@ -19,7 +22,7 @@ class ProductsController < ApplicationController
     end
 
     def update 
-    	@product= Product.new(product_params)
+    	@product= Product.find(params[:id])
     	if @product.update_attributes(product_params)
           # Handle a successful save.
           flash[:success] = "Product updated!"
@@ -34,22 +37,31 @@ class ProductsController < ApplicationController
     end
 
     def index
-    	@products=Product.all
+    	@products=Product.paginate(page: params[:page])
     end 
 
    
     def destroy 
-    end 
+          Product.find(params[:id]).destroy
+          flash[:success] = "Product deleted."
+          redirect_to products_url
+    end
 
+    def edit
+       @product= Product.find(params[:id])
+       8.times {@product.assets.build}
+    end
 
-
-
-
+   
     private 
 
        def product_params 
           params.require(:product).permit(:price, :name, :description,
-                                   assets_attributes: :asset)
+                                   assets_attributes: [:asset, :_destroy, :id])
        end 
+
+       def admin_user
+          redirect_to(root_url) unless current_user.admin?
+       end
 
 end
