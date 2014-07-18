@@ -7,5 +7,8 @@ class Asset < ActiveRecord::Base
 
 	def s3_credentials
     {:bucket => "adjectivs-products", :access_key_id => "AKIAIWKGAOCVWSXLPDDA", :secret_access_key => "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"}
-  end
+    end
+
+     
+       
 end

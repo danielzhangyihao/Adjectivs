@@ -1,0 +1,46 @@
+<% provide(:title, 'Edit product') %>
+<div class="signup-box">
+<h1>Edit product</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@product, :html => {:multipart => true}) do |f| %>
+    
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name, "Product name" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :price %>
+      <%= f.number_field :price, :step => 0.01 %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+
+      <%= f.fields_for :assets do |asset_fields| %>
+          <% unless asset_fields.object.asset.exists? %>
+               <%= asset_fields.file_field :asset %>
+          <% end %>
+      <% end %>
+
+      <%= f.fields_for :assets do |asset_fields| %>
+          <% if !asset_fields.object.nil? and !asset_fields.object.new_record? %>
+                <%= link_to(image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original))%>
+                <%= asset_fields.check_box :_destroy %>
+          <% end %>
+
+      <% end %>
+
+      <%= link_to "Delete Product", @product, method: :delete,
+                                  data: { confirm: "You sure?" }, 
+                                  class:"btn btn-primary deleteUser"  %>
+
+
+     
+<div class="center">
+      <%= f.submit "Edit product", class: "btn btn-large btn-primary create-account" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
