@@ -1,9 +1,16 @@
-<li>
-    <%= link_to product.name, product %>
-    
-    $ <%= product.price %> 
-    
-    <%= link_to( image_tag(product.assets.first.asset.url(:thumb)), product.assets.first.asset.url(:original) ) %>
-  
+<div class='product1'>
+	    <div class='product-image'><%= link_to( image_tag(product.assets.first.asset.url(:medium)), product ) %>
+	    </div>
+	    <div class="center">
+	    <div class= 'product-name'>
+        <%= link_to product.name, product %>
+        </div>
+        <div class= 'product-price'>
+        $ <%= product.price %>
+        </div> 
+    </div>
+</div>
+       
 
-</li>
+
+
