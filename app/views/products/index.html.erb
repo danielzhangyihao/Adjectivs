@@ -1,10 +1,14 @@
 <% provide(:title, 'All products') %>
 <h1>All products</h1>
 
+<div class='container'>
 <%= will_paginate %>
 
-<ul class="users">
+
+<div class="row">
   <%= render @products %>
-</ul>
+</div>
+
 
 <%= will_paginate %>
+</div>
