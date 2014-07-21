@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
 	belongs_to :product
-	has_attached_file :asset, :styles =>{:large => "640x480>", :medium =>"300x300>", :thumb =>"100x100>"}, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+	has_attached_file :asset, :styles =>{:large => "640x480>", :medium =>"354x354#", :thumb =>"100x100>"}, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
 	validates_attachment_content_type :asset, :content_type => /\Aimage\/.*\Z/
 
 
