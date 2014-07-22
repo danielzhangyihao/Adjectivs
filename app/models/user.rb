@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
-  has_attached_file :avatar,:default_url => "/assets/avatars/missing_thumb-5cde93a4175e85fdb3b7843199a670ce.png", :styles => { :medium => "300x300>", :thumb => "100x100>" }#, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+  has_attached_file :avatar,:default_url => "/assets/:attachment/default_:style.png", :styles => { :medium => "300x300>", :thumb => "150x150#", :newsfeed =>"50x50#"  }
+  #, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
