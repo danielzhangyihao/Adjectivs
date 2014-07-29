@@ -20,4 +20,4 @@ doc/
 .idea
 .secret
 .env
-/app/assets/viglink_data
+app/assets/viglink_data/
