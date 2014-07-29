@@ -20,4 +20,4 @@ doc/
 .idea
 .secret
 .env
-/app/assets/viglink_data/nordstrom_1237_2454844_mp 2.xml
+app/assets/viglink_data/**
