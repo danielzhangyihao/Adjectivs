@@ -9,6 +9,7 @@
     	<%= @product.description %>
     </p>
 
+
 <div class="row">
 	<div class="span8">
 		<% if @product.assets.any? %>
@@ -20,6 +21,12 @@
 		</div>
 
 	</div>
+
+
+    <p>
+        <%= link_to "Buy now!",  @product.buy_url,
+                                class: "btn btn-large btn-primary" %>
+    </p>
   
 
 

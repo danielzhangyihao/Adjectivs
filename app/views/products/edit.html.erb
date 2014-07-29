@@ -16,6 +16,9 @@
       <%= f.label :description %>
       <%= f.text_field :description %>
 
+      <%= f.label :buy_url %>
+      <%= f.text_field :buy_url %>
+
 
       <%= f.fields_for :assets do |asset_fields| %>
           <% unless asset_fields.object.asset.exists? %>
