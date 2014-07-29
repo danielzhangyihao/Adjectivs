@@ -8,7 +8,7 @@ namespace :db do
   #task :productData [:store] => :environment do |task, args|
   task productData: :environment  do
     
-    f = File.open("app/assets/viglink_data/nordstrom_1237_2454844_mp 2.xml")
+    f = File.open("app/assets/viglink_data/nordstrom_1237_2454844_mp.xml")
     doc = Nokogiri::XML(f)
     
       variant = doc.xpath("/merchandiser/product").each do |product|
