@@ -21,5 +21,6 @@ doc/
 .secret
 .env
 /app/assets/viglink_data/
+/app/assets/s3-viglink/
 
 
