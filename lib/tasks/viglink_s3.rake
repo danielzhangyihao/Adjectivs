@@ -14,8 +14,8 @@ namespace :db do
     viglink_data=obj.objects['nordstrom_s3.xml']
      
     
-    
-    file = File.open("#{Rails.root}/tmp/viglink_data.xml","wb")
+    file_name="#{Process.pid}_files"
+    file = File.open("#{Rails.root}/tmp/#{file_name}","wb")
     # streaming download from S3 to a file on disk
     
     begin
@@ -33,7 +33,7 @@ namespace :db do
     #end
     
 
-    f = File.open('app/assets/s3-viglink/viglink_data.xml')
+    f = File.open("#{Rails.root}/tmp/#{file_name}")
     #f = File.open("app/assets/viglink_data/nordstrom_1237_2454844_mp.xml")
     doc = Nokogiri::XML(f)
     
