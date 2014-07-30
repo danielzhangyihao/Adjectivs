@@ -15,11 +15,9 @@ namespace :db do
      
     
     
-    file = File.open("app/assets/s3-viglink/viglink_data.xml","wb")
+    file = File.open("app/assets/heroku-s3/viglink_data.xml","wb")
     # streaming download from S3 to a file on disk
     
-
-
     begin
     file.write(viglink_data.read) do |chunk|
       file.write(chunk)
