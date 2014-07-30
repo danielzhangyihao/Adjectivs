@@ -47,8 +47,10 @@ SampleApp::Application.configure do
 }
 
 
+
 AWS.config(
     access_key_id: ENV['AWS_ACCESS_KEY_ID'] , 
     secret_access_key: ENV['SECRET_KEY'], 
     region: 'us-west-2')
+
 end

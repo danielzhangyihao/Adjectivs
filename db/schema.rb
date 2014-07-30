@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140729222826) do
 
+
   create_table "assets", force: true do |t|
     t.string   "asset_file_name"
     t.string   "asset_content_type"
@@ -38,7 +39,9 @@ ActiveRecord::Schema.define(version: 20140729222826) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "price",       precision: 8, scale: 2
+
     t.string   "buy_url"
+
   end
 
   add_index "products", ["name"], name: "index_products_on_name"

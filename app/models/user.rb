@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
- 
+
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -16,11 +16,13 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
   has_attached_file :avatar,:default_url => "/assets/:attachment/default_:style.png", :styles => { :medium => "300x300>", :thumb => "150x150#", :newsfeed =>"50x50#"  }
+
   
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
  
+
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
