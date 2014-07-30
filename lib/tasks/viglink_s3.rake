@@ -14,7 +14,7 @@ namespace :db do
     viglink_data=obj.objects['nordstrom_s3.xml']
      
     
-    file_name="#{Process.pid}_files"
+    file_name="#{Process.pid}_files.xml"
     file = File.open("#{Rails.root}/tmp/#{file_name}","wb")
     # streaming download from S3 to a file on disk
     
