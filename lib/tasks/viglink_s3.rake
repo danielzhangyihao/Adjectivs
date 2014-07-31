@@ -9,7 +9,6 @@ namespace :db do
   #task :productData [:store] => :environment do |task, args|
   task productData: :environment  do
     s3 = AWS::S3.new
-
     obj = s3.buckets['viglink-data']
     viglink_data=obj.objects['nordstrom_s3.xml']
      
@@ -39,8 +38,10 @@ namespace :db do
     else 
       puts "no"
     end
-    
+     
+     puts "1"
       variant = doc.xpath("/merchandiser/product").each do |product|
+        puts "inside loop"
         product_name = product.attribute('name').text()
         puts product_name
         product_price = product.at('price/retail').text()
@@ -53,6 +54,8 @@ namespace :db do
         decoded_url=URI.decode(encoded_url)
         puts decoded_url
 
+        puts "finish parsing"
+
       
 
 
@@ -63,10 +66,8 @@ namespace :db do
       viglink_assets.save!
       viglink_product.save!
 
-
-
-      
-    end
+      end
+      puts "outside loop"
     
 
   end
