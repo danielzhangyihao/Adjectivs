@@ -32,9 +32,9 @@ namespace :db do
     end
     
     f = File.open("#{Rails.root}/tmp/#{file_name}")
-
+    puts f.size
     doc = Nokogiri::XML(f)
-      puts doc.size()
+    
     
      
      puts "1"
