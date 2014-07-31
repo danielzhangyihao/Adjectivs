@@ -33,13 +33,16 @@ namespace :db do
     
     f = File.open("#{Rails.root}/tmp/#{file_name}")
 
-    if doc = Nokogiri::XML(f)
-      puts "yes"
-    else 
-      puts "no"
-    end
+    doc = Nokogiri::XML(f)
+      puts doc.size()
+    
      
      puts "1"
+     if doc.xpath("/merchandiser/product")
+      puts "yes"
+     else 
+      puts "no"
+    end 
       variant = doc.xpath("/merchandiser/product").each do |product|
         puts "inside loop"
         product_name = product.attribute('name').text()
