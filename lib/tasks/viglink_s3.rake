@@ -32,8 +32,8 @@ namespace :db do
       end
     end
     
-
-    f = File.open("#{Rails.root}/tmp/#{file_name}")
+     f = File.open("#{Rails.root}/tmp/x.xml")
+    #f = File.open("#{Rails.root}/tmp/#{file_name}")
     #f = File.open("app/assets/viglink_data/nordstrom_1237_2454844_mp.xml")
     doc = Nokogiri::XML(f)
     
