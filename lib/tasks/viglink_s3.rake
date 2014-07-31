@@ -34,7 +34,6 @@ namespace :db do
     
     f = File.open("#{Rails.root}/tmp/#{file_name}")
 
-    #f = File.open("app/assets/viglink_data/nordstrom_1237_2454844_mp.xml")
     if doc = Nokogiri::XML(f)
       puts "yes"
     else 
