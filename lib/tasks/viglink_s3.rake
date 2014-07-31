@@ -32,22 +32,23 @@ namespace :db do
       end
     end
     
-    if f = File.open("#{Rails.root}/tmp/#{file_name}")
-      puts "yes"
-    else 
-      puts "no"
-    end
+    f = File.open("#{Rails.root}/tmp/#{file_name}")
+
     #f = File.open("app/assets/viglink_data/nordstrom_1237_2454844_mp.xml")
     doc = Nokogiri::XML(f)
     
       variant = doc.xpath("/merchandiser/product").each do |product|
-      product_name = product.attribute('name').text()
-      product_price = product.at('price/retail').text()
-      product_description = product.at('description/short').text()
-      image_url = product.at('URL/productImage').text()
-      full_url= product.at('URL/product').text()
-      encoded_url=full_url.split('murl=')[1]
-      decoded_url=URI.decode(encoded_url)
+        product_name = product.attribute('name').text()
+        puts product_name
+        product_price = product.at('price/retail').text()
+        puts product_price
+        product_description = product.at('description/short').text()
+        puts product_description
+        image_url = product.at('URL/productImage').text()
+        full_url= product.at('URL/product').text()
+        encoded_url=full_url.split('murl=')[1]
+        decoded_url=URI.decode(encoded_url)
+        puts decoded_url
 
       
 
