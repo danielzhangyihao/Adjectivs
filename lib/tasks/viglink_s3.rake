@@ -14,26 +14,29 @@ namespace :db do
      
     
     file_name="#{Process.pid}_files.xml"
-    # file = File.open("#{Rails.root}/tmp/#{file_name}","wb")
+    file = File.open("#{Rails.root}/tmp/#{file_name}","wb")
     # streaming download from S3 to a file on disk
     
-    #begin
-    #file.write(viglink_data.read) do |chunk|
-     # file.write(chunk)
-     #end
-    #end
-    #file.close
-
-
-    File.open("#{Rails.root}/tmp/#{file_name}", 'wb') do |file|
-     viglink_data.read do |chunk|
+    begin
+    file.write(viglink_data.read) do |chunk|
       file.write(chunk)
-      end
+     end
     end
+    puts file.size
+    #file.close
+    #puts file.size
+
+
+    #File.open("#{Rails.root}/tmp/#{file_name}", 'wb') do |file|
+     #viglink_data.read do |chunk|
+      #file.write(chunk)
+      #end
+    #end
     
-    f = File.open("#{Rails.root}/tmp/#{file_name}")
-    puts f.size
-    doc = Nokogiri::XML(f)
+    #f = File.open("#{Rails.root}/tmp/#{file_name}")
+    #puts f.size
+    #doc = Nokogiri::XML(f)
+    doc = Nokogiri::XML(file)
     
     
      
