@@ -38,6 +38,7 @@ namespace :db do
     #doc = Nokogiri::XML(f)
     #doc = Nokogiri::XML(file)
     doc = Nokogiri::XML(viglink_data.read)
+    puts "finish reading"
     doc.xpath("/merchandiser/product")
       
       variant = doc.xpath("/merchandiser/product").each do |product|
