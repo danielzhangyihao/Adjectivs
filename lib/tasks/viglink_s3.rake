@@ -13,16 +13,16 @@ namespace :db do
     viglink_data=obj.objects['nordstrom_s3.xml']
      
     
-    file_name="#{Process.pid}_files.xml"
-    file = File.open("#{Rails.root}/tmp/#{file_name}","wb")
+    #file_name="#{Process.pid}_files.xml"
+    #file = File.open("#{Rails.root}/tmp/#{file_name}","wb")
     # streaming download from S3 to a file on disk
     
-    begin
-    file.write(viglink_data.read) do |chunk|
-      file.write(chunk)
-     end
-    end
-    puts file.size
+    #begin
+    #file.write(viglink_data.read) do |chunk|
+     # file.write(chunk)
+     #end
+    #end
+    #puts file.size
     #file.close
     #puts file.size
 
@@ -36,16 +36,10 @@ namespace :db do
     #f = File.open("#{Rails.root}/tmp/#{file_name}")
     #puts f.size
     #doc = Nokogiri::XML(f)
-    doc = Nokogiri::XML(file)
-    
-    
-     
-     puts "1"
-     if doc.xpath("/merchandiser/product")
-      puts "yes"
-     else 
-      puts "no"
-    end 
+    #doc = Nokogiri::XML(file)
+    doc = Nokogiri::XML(viglink_data.read)
+    doc.xpath("/merchandiser/product")
+      
       variant = doc.xpath("/merchandiser/product").each do |product|
         puts "inside loop"
         product_name = product.attribute('name').text()
