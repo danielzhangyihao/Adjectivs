@@ -1,8 +1,11 @@
-<div class='product1'>
+
 	    
-        <dic class="product-image">
+        
         <%if product.assets.first!=nil %>
+        <div class='product1'>
+            <div class="product-image">
                 <%= link_to( image_tag(product.assets.first.asset.url(:display)), product ) %>
+            </div>
                 <div class="center">
                    <div class= 'product-name'>
                    <%= link_to product.name, product %>
@@ -11,8 +14,13 @@
                       $ <%= product.price %>
                    </div> 
                 </div>
+        </div>
+        
         <%else %>
+        <div class='product1'>
+            <div class="product-image">
                 <%= link_to( image_tag("default-product.png"), product ) %>
+            </div>
                 <div class="center">
                     <div class= 'product-name'>
                     <%= link_to product.name, product %>
@@ -21,12 +29,13 @@
                     $ <%= product.price %>
                     </div> 
                 </div>
-        <%end%>
         </div>
+        <%end%>
+        
         
 
 	   
-</div>
+
        
 
 
