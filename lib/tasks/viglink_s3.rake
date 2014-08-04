@@ -10,7 +10,7 @@ namespace :db do
   task productData: :environment  do
     s3 = AWS::S3.new
     obj = s3.buckets['viglink-data']
-    viglink_data=obj.objects['nordstrom_s3.xml']
+    viglink_data=obj.objects['nordstrom-test.xml']
      
     
     #file_name="#{Process.pid}_files.xml"
@@ -44,16 +44,12 @@ namespace :db do
       variant = doc.xpath("/merchandiser/product").each do |product|
         puts "inside loop"
         product_name = product.attribute('name').text()
-        puts product_name
         product_price = product.at('price/retail').text()
-        puts product_price
         product_description = product.at('description/short').text()
-        puts product_description
         image_url = product.at('URL/productImage').text()
         full_url= product.at('URL/product').text()
         encoded_url=full_url.split('murl=')[1]
         decoded_url=URI.decode(encoded_url)
-        puts decoded_url
 
         puts "finish parsing"
 
