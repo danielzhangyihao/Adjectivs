@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805001549) do
+ActiveRecord::Schema.define(version: 20140805003637) do
 
   create_table "assets", force: true do |t|
     t.string   "asset_file_name"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140805001549) do
     t.datetime "updated_at"
     t.decimal  "price",       precision: 8, scale: 2
     t.string   "buy_url"
-    t.string   "description"
+    t.text     "description"
   end
 
   add_index "products", ["name"], name: "index_products_on_name"
