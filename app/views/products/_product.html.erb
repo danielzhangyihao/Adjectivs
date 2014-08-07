@@ -4,7 +4,7 @@
         <%if product.assets.first!=nil %>
         <div class='product1'>
             <div class="product-image">
-                <%= link_to( image_tag(product.assets.first.asset.url(:display)), product ) %>
+                <%= link_to( image_tag(product.assets.first.asset.url(:grid)), product ) %>
             </div>
                 <div class="center">
                    <div class= 'product-name'>
@@ -19,7 +19,7 @@
         <%else %>
         <div class='product1'>
             <div class="product-image">
-                <%= link_to( image_tag("default-product.png"), product ) %>
+                <%= link_to( image_tag("default-product-grid.png"), product ) %>
             </div>
                 <div class="center">
                     <div class= 'product-name'>

@@ -38,11 +38,9 @@ namespace :db do
     #doc = Nokogiri::XML(f)
     #doc = Nokogiri::XML(file)
     doc = Nokogiri::XML(viglink_data.read)
-    puts "finish reading"
     doc.xpath("/merchandiser/product")
       
       variant = doc.xpath("/merchandiser/product").each do |product|
-        puts "inside loop"
         product_name = product.attribute('name').text()
         product_price = product.at('price/retail').text()
         product_description = product.at('description/short').text()
@@ -51,7 +49,6 @@ namespace :db do
         encoded_url=full_url.split('murl=')[1]
         decoded_url=URI.decode(encoded_url)
 
-        puts "finish parsing"
 
       
 
@@ -64,7 +61,6 @@ namespace :db do
       viglink_product.save!
 
       end
-      puts "outside loop"
     
 
   end

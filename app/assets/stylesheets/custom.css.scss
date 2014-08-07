@@ -346,12 +346,16 @@ p.bottom-line{
 
 .product1{
   float:left;
-  margin-left:40px;
+  margin-left:100px;
 }
 
-.product1:nth-child(4n+1){
+.product1:nth-child(3n+1){
   clear:both;
 
+}
+
+.product-name {
+width: 200px;
 }
 
 
