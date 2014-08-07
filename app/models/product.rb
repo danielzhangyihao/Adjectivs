@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
 
 
 	validates :buy_url, presence: true
+	validates :brand, presence: true
+
 
 	
 

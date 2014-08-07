@@ -1,34 +1,41 @@
 <% provide(:title, @product.name) %>
-    <h1>
-        <%= @product.name %>
-    </h1>
-    <h2>
-      $ <%= @product.price %> 
-    </h2>
-    <p>
-    	<%= @product.description %>
-    </p>
-
-
-<div class="row">
-	<div class="span8">
-		<% if @product.assets.any? %>
-		   <% @product.assets.each do |image| %>
-		   <%= link_to( image_tag(image.asset.url(:original)), image.asset.url(:original) ) %>
+   <div class="row product_show">
+    <div class="span8 product_image">
+        <% if @product.assets.any? %>
+           <% @product.assets.each do |image| %>
+           <%= link_to( image_tag(image.asset.url(:original)), image.asset.url(:original) ) %>
            <% end %>
         <% end %>
 
-		</div>
+        </div>
+        <div class="product_info">
 
-	</div>
-
-
-
-
-    <p>
+        <div class="product_show_name">
+        <%= @product.name %>
+        </div>
+        <div class="product_show_brand">
+         By <%= @product.brand %>
+        </div>
+        <div class="product_show_price">
+         $ <%= @product.price %> 
+        </div>
+        <div class="product_show_description">
+        <%= @product.description %>
+        </div>
+        <div class="product_show_size">
+        <%= @product.size %>
+        </div>
+        <div class="product_show_color">
+        <%= @product.color %>
+        </div>
+        
+        <p>
         <%= link_to "Buy now!",  @product.buy_url,
                                 class: "btn btn-large btn-primary" %>
-    </p>
+        </p>
+        </div>
+
+        </div> 
 
 
   

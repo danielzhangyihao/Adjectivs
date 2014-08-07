@@ -41,24 +41,28 @@ namespace :db do
     doc.xpath("/merchandiser/product")
       
       variant = doc.xpath("/merchandiser/product").each do |product|
-        product_name = product.attribute('name').text()
-        product_price = product.at('price/retail').text()
-        product_description = product.at('description/short').text()
-        image_url = product.at('URL/productImage').text()
-        full_url= product.at('URL/product').text()
-        encoded_url=full_url.split('murl=')[1]
-        decoded_url=URI.decode(encoded_url)
+        if product.at('category/primary').text()=="Women"
+          product_name = product.attribute('name').text()
+          product_price = product.at('price/retail').text()
+          product_description = product.at('description/short').text()
+          image_url = product.at('URL/productImage').text()
+          full_url= product.at('URL/product').text()
+          encoded_url=full_url.split('murl=')[1]
+          decoded_url=URI.decode(encoded_url)
+          primary=product.at('category/primary').text()
+          secondary=product.at('category/secondary').text()
+          brand=product.at('brand').text()
+          size=product.at('attributeClass/Size').text()
+          color=product.at('attributeClass/Color').text()
 
 
       
-
-
-      
-      viglink_product = Product.create!(name: product_name, price: product_price, description: product_description, buy_url: decoded_url)
-      viglink_assets = viglink_product.assets.build
-      viglink_assets.asset = URI.parse(image_url)
-      viglink_assets.save!
-      viglink_product.save!
+          viglink_product = Product.create!(name: product_name, price: product_price, description: product_description, buy_url: decoded_url,primary:primary,secondary:secondary,brand:brand,size:size,color:color)
+          viglink_assets = viglink_product.assets.build
+          viglink_assets.asset = URI.parse(image_url)
+          viglink_assets.save!
+          viglink_product.save!
+      end
 
       end
     

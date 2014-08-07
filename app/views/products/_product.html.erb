@@ -7,6 +7,9 @@
                 <%= link_to( image_tag(product.assets.first.asset.url(:grid)), product ) %>
             </div>
                 <div class="center">
+                  <div class= 'product-brand'>
+                      <%= product.brand %>
+                   </div> 
                    <div class= 'product-name'>
                    <%= link_to product.name, product %>
                    </div>
@@ -22,6 +25,9 @@
                 <%= link_to( image_tag("default-product-grid.png"), product ) %>
             </div>
                 <div class="center">
+                  <div class= 'product-brand'>
+                      $ <%= product.brand %>
+                   </div>
                     <div class= 'product-name'>
                     <%= link_to product.name, product %>
                     </div>

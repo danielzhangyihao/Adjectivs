@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805003637) do
+ActiveRecord::Schema.define(version: 20140807100128) do
 
   create_table "assets", force: true do |t|
     t.string   "asset_file_name"
@@ -39,9 +39,20 @@ ActiveRecord::Schema.define(version: 20140805003637) do
     t.decimal  "price",       precision: 8, scale: 2
     t.string   "buy_url"
     t.text     "description"
+    t.string   "brand"
+    t.string   "primary"
+    t.string   "secondary"
+    t.string   "size"
+    t.string   "color"
   end
 
+  add_index "products", ["brand"], name: "index_products_on_brand"
+  add_index "products", ["color"], name: "index_products_on_color"
   add_index "products", ["name"], name: "index_products_on_name"
+  add_index "products", ["price"], name: "index_products_on_price"
+  add_index "products", ["primary"], name: "index_products_on_primary"
+  add_index "products", ["secondary"], name: "index_products_on_secondary"
+  add_index "products", ["size"], name: "index_products_on_size"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
