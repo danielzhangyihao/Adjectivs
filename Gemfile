@@ -15,6 +15,7 @@ gem "paperclip", "~> 4.1"
 gem 'httparty', '~> 0.13.1'
 gem 'aws-sdk', '~> 1.5.7'
 gem 'amazon-product-advertising-api'
+gem 'algoliasearch-rails'
 
 
 group :development, :test do

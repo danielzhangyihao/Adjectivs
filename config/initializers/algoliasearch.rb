@@ -1,0 +1,1 @@
+AlgoliaSearch.configuration = { application_id: 'MN4PY5X4Z1', api_key: '49902b14253b19b2f557b8da38b0892d', pagination_backend: :will_paginate  }
